@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "shortcut icon" type = "image/x-icon" href = "fabicon.png">
+    <style>
+        body{
+            background-color: black;
+            font-weight: bold;
+        }
+        
+        #normal, #hard, #hell, #eternal{
+            color: white;
+
+        }
+
+        #normal_box, #hard_box, #hell_box, #eternal_box{
+            width: 6%;
+            font-weight: bold;
+        }
+
+        #sumbit{
+            font-weight: bold;
+        }
+
+        #normal_div, #hard_div, #hell_div, #eternal_div, #submit_div{
+            padding-top: 1%;
+        }
+
+        #submit_div{
+            padding-left: 40.5%;
+            padding-top: 5%;
+        }
+
+        #print_div{
+            color: white;
+            font: bold;
+            padding-top: 5%;
+            padding-left: 45%;
+        }
+
+        img{
+            width: 3.5%;
+            padding-right: 0.5%;
+        }
+
+        footer{
+            display: block;
+            color: white;
+            font: bold;
+            padding-left: 40%;
+            padding-top: 5%;
+        }
+
+        #main_div{
+            width: 100%;
+        }
+
+        #having_div{
+            float: left;
+            color: white;
+            font-weight: bold;
+            font-size: 120%;
+            width: 20%;
+            padding-left: 30%;
+            padding-top: 1%;
+            display: block;
+        }
+
+        #lv9jew{
+            margin-bottom: 9.5%;
+        }
+
+        #ticket_div{
+            margin-left: 50%;
+            width: 49.5%;
+            
+        }
+
+        #submit_div{
+            padding-top: 5%;
+            padding-left: 35%;
+        }
+
+        #submit, #reset{
+            width: 20%;
+            height: 45px;
+        }
+
+        #lv1jew, #lv2jew, #lv3jew, #lv4jew, #lv5jew, #lv6jew, #lv7jew, #lv8jew, #lv9jew{
+            margin-top: 5%;
+            font-weight: bold;
+            width: 15%;
+        }
+
+        img{
+            position: relative;
+            width: 8%;
+            margin-top: 1.5%;
+        }
+
+        #explain{
+            margin-left: 8%;
+            color: orange;
+        }
+
+    </style>
+    <title>회랑 계산기</title>
+</head>
+
+
+
+<body>
+    <div id = "main_div">
+        <div id = "having_div">
+            <div id = "explain">보유 보석 개수</div>
+
+            1 레벨 보석　<input type = "number" id = "lv1jew" min = "0" value = "0"><br>
+            2 레벨 보석　<input type = "number" id = "lv2jew" min = "0" value = "0"><br>
+            3 레벨 보석　<input type = "number" id = "lv3jew" min = "0" value = "0"><br>
+            4 레벨 보석　<input type = "number" id = "lv4jew" min = "0" value = "0"><br>
+            5 레벨 보석　<input type = "number" id = "lv5jew" min = "0" value = "0"><br>
+            6 레벨 보석　<input type = "number" id = "lv6jew" min = "0" value = "0"><br>
+            7 레벨 보석　<input type = "number" id = "lv7jew" min = "0" value = "0"><br>
+            8 레벨 보석　<input type = "number" id = "lv8jew" min = "0" value = "0"><br>
+            9 레벨 보석　<input type = "number" id = "lv9jew" min = "0" value = "0"><br>
+        </div>
+
+        <div id ="ticket_div">
+            <div id = "normal_div">
+            <label for = "normal" id = normal> <img id = "normal_image" src = "노말_회랑.png" alt = ""> 노말</label>
+            <input type = "number" id = "normal_box" name = "노말" min = "0" max = "100" value = "0">
+            </div>
+
+            <div id = "hard_div">
+            <label for = "hard" id = hard> <img id = "normal_image" src = "하드_회랑.png" alt = ""> 하드</label>
+            <input type = "number" id = "hard_box" name = "하드" min = "0" max = "100" value = "0">
+            </div>
+
+            <div id = "hell_div">
+            <label for = "hell" id = hell> <img id = "normal_image" src = "헬_회랑.png" alt = ""> 헬　</label>
+            <input type = "number" id = "hell_box" name = "헬" min = "0" max = "100" value = "0">
+            </div>
+
+            <div id = "eternal_div">
+            <label for = "eternal" id = eternal> <img id = "normal_image" src = "영겁_회랑.png" alt = ""> 영겁</label>
+            <input type = "number" id = "eternal_box" name = "영겁" min = "0" max = "100" value = "0">
+            </div>
+        </div>
+    </div>
+
+
+    <div id = "submit_div">
+    <button class = "submit" type = "button" id = "submit">확인</button>
+    <button class = "reset" type = "button" id = "reset">리셋</button>
+    </div>
+
+    <div id = "print_div">
+    
+    </div>
+
+    <footer id = "footer">
+        <p>　2022. ⓒ ZisoB All rights reserved.</p>
+        <p>　Discord: Ziso#2060 | 카마인: ZisoB</p>        
+    </footer>
+
+
+
+    <script lang="javascript">
+        var normal_box = document.getElementById("normal_box");
+        var hard_box = document.getElementById("hard_box");
+        var hell_box = document.getElementById("hell_box");
+        var eternal_box = document.getElementById("eternal_box");
+        var print_box = document.getElementById("print_div");
+
+        var normal_div = document.getElementById("normal_div");
+        var hard_div = document.getElementById("hard_div");
+        var hell_div = document.getElementById("hell_div");
+        var eternal_div = document.getElementById("eternal_div");
+        //  print_box = print_div
+        var footer_div = document.getElementById("footer");
+
+        var button_div = document.getElementById("submit_div");
+        var submit = document.getElementById("submit");
+        var reset = document.getElementById("reset");
+
+        // Each jew level var
+        var lv1jew = document.getElementById("lv1jew");
+        var lv2jew = document.getElementById("lv2jew");
+        var lv3jew = document.getElementById("lv3jew");
+        var lv4jew = document.getElementById("lv4jew");
+        var lv5jew = document.getElementById("lv5jew");
+        var lv6jew = document.getElementById("lv6jew");
+        var lv7jew = document.getElementById("lv7jew");
+        var lv8jew = document.getElementById("lv8jew");
+        var lv9jew = document.getElementById("lv9jew");
+        //
+
+        // 보석 레벨
+        var lv0 = 0;
+        var lv1 = 0;
+        var lv2 = 0;
+        var lv3 = 0;
+        var lv4 = 0;
+        var lv5 = 0;
+        var lv6 = 0;
+        var lv7 = 0;
+        var lv8 = 0;
+        var lv9 = 0;
+        var lv10 = 0;
+
+        var lv11 = 0;
+        
+
+        document.getElementById("submit").addEventListener("click", function(){ // 확인 버튼 이벤트
+
+            // 만약 모든 티켓을 0으로 했을 경우, 티켓 설정 재확인
+            if(normal_box.value == 0 && hard_box.value == 0 && hell_box.value == 0 && eternal_box.value == 0){
+                alert("사용 할 티켓의 개수를 확인해주세요.");
+
+                
+            }
+            else if(normal_box.value >= 1 || hard_box.value >= 1 || hell_box.value >= 1 || eternal_box.value >= 1){
+
+                let jew = [lv0, lv1, lv2, lv3, lv4, lv5, lv6, lv7, lv8, lv9, lv10, lv11];
+
+                print_box.innerHTML = "";
+                
+                jew[1] = parseInt(lv1jew.value);
+                jew[2] = parseInt(hell_box.value) * 2 + (parseInt(lv2jew.value));
+                jew[3] = (parseInt(normal_box.value) + parseInt(hard_box.value)) + parseInt(hell_box.value) * 2 + parseInt(eternal_box.value) + (parseInt(lv3jew.value));
+                jew[4] = parseInt(normal_box.value) * 2 + parseInt(hard_box.value) * 2 + parseInt(hell_box.value) * 2 + (parseInt(lv4jew.value));
+                jew[5] = parseInt(eternal_box.value) + (parseInt(lv5jew.value));
+                jew[6] = parseInt(lv6jew.value);
+                jew[7] = parseInt(lv7jew.value);
+                jew[8] = parseInt(lv8jew.value);
+                jew[9] = parseInt(lv9jew.value);
+                
+                for(var i = 0; i < jew.length; i ++){
+                    if(jew[i] >= 3){
+                        jew[i + 1] += Math.floor(jew[i] / 3);
+                        jew[i] = jew[i] % 3;
+                    }
+
+                    else if(jew[11] >= 1){
+                        jew[10] += Math.floor(jew[11] * 3);
+                        jew[11] = 0;
+                    }
+                }
+
+
+                for(var x = 0; x < jew.length - 1; x++){
+                    if(jew[x] != 0){
+                        print_box.innerHTML = print_box.innerHTML + x + " 레벨 보석: " + jew[x] + "개<br><br>";
+                    }
+                }
+
+                if(jew[11] >= 1){
+                    console.log("abc");
+                }                
+                
+            }
+        });
+    
+
+        document.getElementById("reset").addEventListener("click", function(){  //  리셋 버튼 이벤트
+
+            normal_box.value = 0;
+            hard_box.value = 0;
+            hell_box.value = 0;
+            eternal_box.value = 0;
+            print_box.innerHTML = "";
+
+        })
+
+
+        function detectMobileDevice(agent) {
+            const mobileRegex = [
+                /Android/i,
+                /iPhone/i,
+                /iPad/i,
+                /iPod/i,
+                /BlackBerry/i,
+                /Windows Phone/i
+            ]
+
+                return mobileRegex.some(mobile => agent.match(mobile))
+        }
+
+        const isMobile = detectMobileDevice(window.navigator.userAgent)
+
+
+        /*
+
+        var normal_div = document.getElementById("normal_div");
+        var hard_div = document.getElementById("hard_div");
+        var hell_div = document.getElementById("hell_div");
+        var eternal_div = document.getElementById("eternal_div");
+        print_box = print_div
+        var footer_div = document.getElementById("footer");
+
+        */
+
+        if (isMobile) {
+            console.log('current device is mobile')
+
+            normal_div.style.paddingRight = "20%";
+            hard_div.style.paddingRight = "20%";
+            hell_div.style.paddingRight = "20%";
+            eternal_div.style.paddingRight = "20%";
+
+            normal_box.style.width = "10%";
+            normal_box.style.fontSize = "100%";
+
+            hard_box.style.width = "10%";
+            hard_box.style.fontSize = "100%";
+
+            hell_box.style.width = "10%";
+            hell_box.style.fontSize = "100%";
+
+            eternal_box.style.width = "10%";
+            eternal_box.style.fontSize = "100%";
+
+            print_box.style.float = "left";
+            print_box.style.width = "100%";
+            print_box.style.paddingLeft = "35%";
+
+            footer_div.style.float = "left";
+            footer_div.style.width = "100%";
+            footer_div.style.paddingLeft = "12%";
+            
+            button_div.style.position = "relative";
+            button_div.style.float = "left";
+            button_div.style.width = "100%";
+            button_div.style.paddingTop = "10%";
+            
+
+        } else {
+            console.log('current device is not mobile')
+
+        }
+    </script>
+</body>
+</html>
