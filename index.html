@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="fabicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
     <title>회랑 계산기</title>
 
     <style>
@@ -42,10 +42,6 @@
             --accent2: #e6c96b;
             --text: #e8e6f0;
             --text-dim: #8a88a0;
-            --blue: #4a90d9;
-            --red: #d94a4a;
-            --purple: #9b4ad9;
-            --green: #4ad97a;
             --radius: 10px;
         }
 
@@ -107,7 +103,6 @@
             border-bottom: 1px solid var(--border);
         }
 
-        /* 보석 보유 섹션 */
         .gem-list {
             display: flex;
             flex-direction: column;
@@ -155,12 +150,6 @@
             padding: 6px 10px;
             text-align: center;
             transition: border-color 0.2s;
-            -moz-appearance: textfield;
-        }
-
-        .gem-input::-webkit-inner-spin-button,
-        .gem-input::-webkit-outer-spin-button {
-            opacity: 1;
         }
 
         .gem-input:focus {
@@ -168,7 +157,6 @@
             border-color: var(--accent);
         }
 
-        /* 티켓 섹션 */
         .ticket-list {
             display: flex;
             flex-direction: column;
@@ -202,10 +190,10 @@
             font-weight: 600;
         }
 
-        .ticket-name.normal { color: #a0c8f0; }
-        .ticket-name.hard   { color: #f0c840; }
-        .ticket-name.hell   { color: #f07050; }
-        .ticket-name.eternal{ color: #b880f0; }
+        .ticket-name.normal  { color: #a0c8f0; }
+        .ticket-name.hard    { color: #f0c840; }
+        .ticket-name.hell    { color: #f07050; }
+        .ticket-name.eternal { color: #b880f0; }
 
         .ticket-input {
             width: 70px;
@@ -226,7 +214,6 @@
             border-color: var(--accent);
         }
 
-        /* 액션 영역 */
         .action-area {
             grid-column: 1 / -1;
             display: flex;
@@ -269,7 +256,6 @@
             color: var(--text);
         }
 
-        /* 결과 영역 */
         .result-area {
             grid-column: 1 / -1;
             display: none;
@@ -340,35 +326,13 @@
             line-height: 1.8;
         }
 
-        /* 반응형 */
         @media (max-width: 640px) {
-            body {
-                padding: 20px 12px 48px;
-            }
-
-            .page-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .calculator {
-                grid-template-columns: 1fr;
-            }
-
-            .action-area {
-                grid-column: 1;
-            }
-
-            .result-area {
-                grid-column: 1;
-            }
-
-            .result-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .btn {
-                max-width: none;
-            }
+            body { padding: 20px 12px 48px; }
+            .page-header h1 { font-size: 1.5rem; }
+            .calculator { grid-template-columns: 1fr; }
+            .action-area, .result-area { grid-column: 1; }
+            .result-grid { grid-template-columns: repeat(3, 1fr); }
+            .btn { max-width: none; }
         }
     </style>
 </head>
@@ -381,7 +345,6 @@
 
     <main class="calculator">
 
-        <!-- 보유 보석 -->
         <div class="card">
             <div class="card-title">보유 보석</div>
             <div class="gem-list">
@@ -424,40 +387,37 @@
             </div>
         </div>
 
-        <!-- 회랑 티켓 -->
         <div class="card">
             <div class="card-title">회랑 티켓</div>
             <div class="ticket-list">
                 <div class="ticket-row">
-                    <img src="노말_회랑.png" alt="노말 회랑">
+                    <img src="images/normal.png" alt="노말 회랑">
                     <span class="ticket-name normal">노말</span>
                     <input class="ticket-input" type="number" id="normal_box" min="0" max="100" value="0">
                 </div>
                 <div class="ticket-row">
-                    <img src="하드_회랑.png" alt="하드 회랑">
+                    <img src="images/hard.png" alt="하드 회랑">
                     <span class="ticket-name hard">하드</span>
                     <input class="ticket-input" type="number" id="hard_box" min="0" max="100" value="0">
                 </div>
                 <div class="ticket-row">
-                    <img src="헬_회랑.png" alt="헬 회랑">
+                    <img src="images/hell.png" alt="헬 회랑">
                     <span class="ticket-name hell">헬</span>
                     <input class="ticket-input" type="number" id="hell_box" min="0" max="100" value="0">
                 </div>
                 <div class="ticket-row">
-                    <img src="영겁_회랑.png" alt="영겁 회랑">
+                    <img src="images/eternal.png" alt="영겁 회랑">
                     <span class="ticket-name eternal">영겁</span>
                     <input class="ticket-input" type="number" id="eternal_box" min="0" max="100" value="0">
                 </div>
             </div>
         </div>
 
-        <!-- 버튼 -->
         <div class="action-area">
             <button class="btn btn-primary" id="submit">확인</button>
             <button class="btn btn-secondary" id="reset">리셋</button>
         </div>
 
-        <!-- 결과 -->
         <div class="result-area card" id="result_area">
             <div class="card-title">계산 결과</div>
             <div class="result-grid" id="result_grid"></div>
@@ -499,11 +459,7 @@
                 return;
             }
 
-            var lv0  = 0, lv1  = 0, lv2  = 0, lv3  = 0,
-                lv4  = 0, lv5  = 0, lv6  = 0, lv7  = 0,
-                lv8  = 0, lv9  = 0, lv10 = 0, lv11 = 0;
-
-            var jew = [lv0, lv1, lv2, lv3, lv4, lv5, lv6, lv7, lv8, lv9, lv10, lv11];
+            var jew = [0,0,0,0,0,0,0,0,0,0,0,0];
 
             jew[1] = parseInt(lv1jew.value);
             jew[2] = parseInt(hell_box.value) * 2 + parseInt(lv2jew.value);
