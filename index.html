@@ -1,192 +1,483 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "shortcut icon" type = "image/x-icon" href = "fabicon.png">
-    <style>
-        body{
-            background-color: black;
-            font-weight: bold;
-        }
-        
-        #normal, #hard, #hell, #eternal{
-            color: white;
-
-        }
-
-        #normal_box, #hard_box, #hell_box, #eternal_box{
-            width: 6%;
-            font-weight: bold;
-        }
-
-        #sumbit{
-            font-weight: bold;
-        }
-
-        #normal_div, #hard_div, #hell_div, #eternal_div, #submit_div{
-            padding-top: 1%;
-        }
-
-        #submit_div{
-            padding-left: 40.5%;
-            padding-top: 5%;
-        }
-
-        #print_div{
-            color: white;
-            font: bold;
-            padding-top: 5%;
-            padding-left: 45%;
-        }
-
-        img{
-            width: 3.5%;
-            padding-right: 0.5%;
-        }
-
-        footer{
-            display: block;
-            color: white;
-            font: bold;
-            padding-left: 40%;
-            padding-top: 5%;
-        }
-
-        #main_div{
-            width: 100%;
-        }
-
-        #having_div{
-            float: left;
-            color: white;
-            font-weight: bold;
-            font-size: 120%;
-            width: 20%;
-            padding-left: 30%;
-            padding-top: 1%;
-            display: block;
-        }
-
-        #lv9jew{
-            margin-bottom: 9.5%;
-        }
-
-        #ticket_div{
-            margin-left: 50%;
-            width: 49.5%;
-            
-        }
-
-        #submit_div{
-            padding-top: 5%;
-            padding-left: 35%;
-        }
-
-        #submit, #reset{
-            width: 20%;
-            height: 45px;
-        }
-
-        #lv1jew, #lv2jew, #lv3jew, #lv4jew, #lv5jew, #lv6jew, #lv7jew, #lv8jew, #lv9jew{
-            margin-top: 5%;
-            font-weight: bold;
-            width: 15%;
-        }
-
-        img{
-            position: relative;
-            width: 8%;
-            margin-top: 1.5%;
-        }
-
-        #explain{
-            margin-left: 8%;
-            color: orange;
-        }
-
-    </style>
+    <link rel="shortcut icon" type="image/x-icon" href="fabicon.png">
     <title>회랑 계산기</title>
+
+    <style>
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205-2@1.0/Paperlogy-4Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205-2@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205-2@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d0d12;
+            --surface: #161620;
+            --surface2: #1e1e2e;
+            --border: #2e2e45;
+            --accent: #c8a84b;
+            --accent2: #e6c96b;
+            --text: #e8e6f0;
+            --text-dim: #8a88a0;
+            --blue: #4a90d9;
+            --red: #d94a4a;
+            --purple: #9b4ad9;
+            --green: #4ad97a;
+            --radius: 10px;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(200, 168, 75, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 90%, rgba(74, 144, 217, 0.05) 0%, transparent 50%);
+            color: var(--text);
+            font-family: 'Paperlogy', 'Malgun Gothic', sans-serif;
+            font-weight: 400;
+            min-height: 100vh;
+            padding: 32px 16px 64px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.06em;
+            text-shadow: 0 0 20px rgba(200, 168, 75, 0.3);
+        }
+
+        .page-header p {
+            margin-top: 8px;
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .calculator {
+            max-width: 860px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* 보석 보유 섹션 */
+        .gem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .gem-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gem-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gem-level-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 800;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--accent);
+        }
+
+        .gem-input {
+            width: 80px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: 'Paperlogy', 'Malgun Gothic', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            text-align: center;
+            transition: border-color 0.2s;
+            -moz-appearance: textfield;
+        }
+
+        .gem-input::-webkit-inner-spin-button,
+        .gem-input::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+
+        .gem-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* 티켓 섹션 */
+        .ticket-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .ticket-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 10px 14px;
+            transition: border-color 0.2s;
+        }
+
+        .ticket-row:hover {
+            border-color: var(--accent);
+        }
+
+        .ticket-row img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .ticket-name {
+            flex: 1;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .ticket-name.normal { color: #a0c8f0; }
+        .ticket-name.hard   { color: #f0c840; }
+        .ticket-name.hell   { color: #f07050; }
+        .ticket-name.eternal{ color: #b880f0; }
+
+        .ticket-input {
+            width: 70px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: 'Paperlogy', 'Malgun Gothic', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .ticket-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* 액션 영역 */
+        .action-area {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            flex: 1;
+            max-width: 200px;
+            height: 48px;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'Paperlogy', 'Malgun Gothic', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c8a84b, #e6c96b);
+            color: #0d0d12;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 16px rgba(200, 168, 75, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-dim);
+            color: var(--text);
+        }
+
+        /* 결과 영역 */
+        .result-area {
+            grid-column: 1 / -1;
+            display: none;
+        }
+
+        .result-area.visible {
+            display: block;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .result-item {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+        }
+
+        .result-item-level {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        .result-item-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .result-item-unit {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .result-empty {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            padding: 32px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 48px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* 반응형 */
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 12px 48px;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .calculator {
+                grid-template-columns: 1fr;
+            }
+
+            .action-area {
+                grid-column: 1;
+            }
+
+            .result-area {
+                grid-column: 1;
+            }
+
+            .result-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .btn {
+                max-width: none;
+            }
+        }
+    </style>
 </head>
 
-
-
 <body>
-    <div id = "main_div">
-        <div id = "having_div">
-            <div id = "explain">보유 보석 개수</div>
+    <header class="page-header">
+        <h1>⚔ 회랑 계산기</h1>
+        <p>보유 보석과 회랑 티켓을 입력하면 획득 가능한 보석을 계산합니다.</p>
+    </header>
 
-            1 레벨 보석　<input type = "number" id = "lv1jew" min = "0" value = "0"><br>
-            2 레벨 보석　<input type = "number" id = "lv2jew" min = "0" value = "0"><br>
-            3 레벨 보석　<input type = "number" id = "lv3jew" min = "0" value = "0"><br>
-            4 레벨 보석　<input type = "number" id = "lv4jew" min = "0" value = "0"><br>
-            5 레벨 보석　<input type = "number" id = "lv5jew" min = "0" value = "0"><br>
-            6 레벨 보석　<input type = "number" id = "lv6jew" min = "0" value = "0"><br>
-            7 레벨 보석　<input type = "number" id = "lv7jew" min = "0" value = "0"><br>
-            8 레벨 보석　<input type = "number" id = "lv8jew" min = "0" value = "0"><br>
-            9 레벨 보석　<input type = "number" id = "lv9jew" min = "0" value = "0"><br>
+    <main class="calculator">
+
+        <!-- 보유 보석 -->
+        <div class="card">
+            <div class="card-title">보유 보석</div>
+            <div class="gem-list">
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">1</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv1jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">2</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv2jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">3</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv3jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">4</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv4jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">5</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv5jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">6</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv6jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">7</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv7jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">8</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv8jew" min="0" value="0">
+                </div>
+                <div class="gem-row">
+                    <span class="gem-label"><span class="gem-level-badge">9</span> 레벨 보석</span>
+                    <input class="gem-input" type="number" id="lv9jew" min="0" value="0">
+                </div>
+            </div>
         </div>
 
-        <div id ="ticket_div">
-            <div id = "normal_div">
-            <label for = "normal" id = normal> <img id = "normal_image" src = "노말_회랑.png" alt = ""> 노말</label>
-            <input type = "number" id = "normal_box" name = "노말" min = "0" max = "100" value = "0">
-            </div>
-
-            <div id = "hard_div">
-            <label for = "hard" id = hard> <img id = "normal_image" src = "하드_회랑.png" alt = ""> 하드</label>
-            <input type = "number" id = "hard_box" name = "하드" min = "0" max = "100" value = "0">
-            </div>
-
-            <div id = "hell_div">
-            <label for = "hell" id = hell> <img id = "normal_image" src = "헬_회랑.png" alt = ""> 헬　</label>
-            <input type = "number" id = "hell_box" name = "헬" min = "0" max = "100" value = "0">
-            </div>
-
-            <div id = "eternal_div">
-            <label for = "eternal" id = eternal> <img id = "normal_image" src = "영겁_회랑.png" alt = ""> 영겁</label>
-            <input type = "number" id = "eternal_box" name = "영겁" min = "0" max = "100" value = "0">
+        <!-- 회랑 티켓 -->
+        <div class="card">
+            <div class="card-title">회랑 티켓</div>
+            <div class="ticket-list">
+                <div class="ticket-row">
+                    <img src="노말_회랑.png" alt="노말 회랑">
+                    <span class="ticket-name normal">노말</span>
+                    <input class="ticket-input" type="number" id="normal_box" min="0" max="100" value="0">
+                </div>
+                <div class="ticket-row">
+                    <img src="하드_회랑.png" alt="하드 회랑">
+                    <span class="ticket-name hard">하드</span>
+                    <input class="ticket-input" type="number" id="hard_box" min="0" max="100" value="0">
+                </div>
+                <div class="ticket-row">
+                    <img src="헬_회랑.png" alt="헬 회랑">
+                    <span class="ticket-name hell">헬</span>
+                    <input class="ticket-input" type="number" id="hell_box" min="0" max="100" value="0">
+                </div>
+                <div class="ticket-row">
+                    <img src="영겁_회랑.png" alt="영겁 회랑">
+                    <span class="ticket-name eternal">영겁</span>
+                    <input class="ticket-input" type="number" id="eternal_box" min="0" max="100" value="0">
+                </div>
             </div>
         </div>
-    </div>
 
+        <!-- 버튼 -->
+        <div class="action-area">
+            <button class="btn btn-primary" id="submit">확인</button>
+            <button class="btn btn-secondary" id="reset">리셋</button>
+        </div>
 
-    <div id = "submit_div">
-    <button class = "submit" type = "button" id = "submit">확인</button>
-    <button class = "reset" type = "button" id = "reset">리셋</button>
-    </div>
+        <!-- 결과 -->
+        <div class="result-area card" id="result_area">
+            <div class="card-title">계산 결과</div>
+            <div class="result-grid" id="result_grid"></div>
+        </div>
 
-    <div id = "print_div">
-    
-    </div>
+    </main>
 
-    <footer id = "footer">
-        <p>　2022. ⓒ ZisoB All rights reserved.</p>
-        <p>　Discord: Ziso#2060 | 카마인: ZisoB</p>        
+    <footer>
+        <p>2022. ⓒ ZisoB All rights reserved.</p>
+        <p>Discord: Ziso#2060 &nbsp;|&nbsp; 카마인: ZisoB</p>
     </footer>
 
-
-
-    <script lang="javascript">
-        var normal_box = document.getElementById("normal_box");
-        var hard_box = document.getElementById("hard_box");
-        var hell_box = document.getElementById("hell_box");
+    <script>
+        var normal_box  = document.getElementById("normal_box");
+        var hard_box    = document.getElementById("hard_box");
+        var hell_box    = document.getElementById("hell_box");
         var eternal_box = document.getElementById("eternal_box");
-        var print_box = document.getElementById("print_div");
+        var result_area = document.getElementById("result_area");
+        var result_grid = document.getElementById("result_grid");
 
-        var normal_div = document.getElementById("normal_div");
-        var hard_div = document.getElementById("hard_div");
-        var hell_div = document.getElementById("hell_div");
-        var eternal_div = document.getElementById("eternal_div");
-        //  print_box = print_div
-        var footer_div = document.getElementById("footer");
-
-        var button_div = document.getElementById("submit_div");
-        var submit = document.getElementById("submit");
-        var reset = document.getElementById("reset");
-
-        // Each jew level var
         var lv1jew = document.getElementById("lv1jew");
         var lv2jew = document.getElementById("lv2jew");
         var lv3jew = document.getElementById("lv3jew");
@@ -196,151 +487,78 @@
         var lv7jew = document.getElementById("lv7jew");
         var lv8jew = document.getElementById("lv8jew");
         var lv9jew = document.getElementById("lv9jew");
-        //
 
-        // 보석 레벨
-        var lv0 = 0;
-        var lv1 = 0;
-        var lv2 = 0;
-        var lv3 = 0;
-        var lv4 = 0;
-        var lv5 = 0;
-        var lv6 = 0;
-        var lv7 = 0;
-        var lv8 = 0;
-        var lv9 = 0;
-        var lv10 = 0;
-
-        var lv11 = 0;
-        
-
-        document.getElementById("submit").addEventListener("click", function(){ // 확인 버튼 이벤트
-
-            // 만약 모든 티켓을 0으로 했을 경우, 티켓 설정 재확인
-            if(normal_box.value == 0 && hard_box.value == 0 && hell_box.value == 0 && eternal_box.value == 0){
+        document.getElementById("submit").addEventListener("click", function () {
+            if (
+                normal_box.value == 0 &&
+                hard_box.value == 0 &&
+                hell_box.value == 0 &&
+                eternal_box.value == 0
+            ) {
                 alert("사용 할 티켓의 개수를 확인해주세요.");
-
-                
+                return;
             }
-            else if(normal_box.value >= 1 || hard_box.value >= 1 || hell_box.value >= 1 || eternal_box.value >= 1){
 
-                let jew = [lv0, lv1, lv2, lv3, lv4, lv5, lv6, lv7, lv8, lv9, lv10, lv11];
+            var lv0  = 0, lv1  = 0, lv2  = 0, lv3  = 0,
+                lv4  = 0, lv5  = 0, lv6  = 0, lv7  = 0,
+                lv8  = 0, lv9  = 0, lv10 = 0, lv11 = 0;
 
-                print_box.innerHTML = "";
-                
-                jew[1] = parseInt(lv1jew.value);
-                jew[2] = parseInt(hell_box.value) * 2 + (parseInt(lv2jew.value));
-                jew[3] = (parseInt(normal_box.value) + parseInt(hard_box.value)) + parseInt(hell_box.value) * 2 + parseInt(eternal_box.value) + (parseInt(lv3jew.value));
-                jew[4] = parseInt(normal_box.value) * 2 + parseInt(hard_box.value) * 2 + parseInt(hell_box.value) * 2 + (parseInt(lv4jew.value));
-                jew[5] = parseInt(eternal_box.value) + (parseInt(lv5jew.value));
-                jew[6] = parseInt(lv6jew.value);
-                jew[7] = parseInt(lv7jew.value);
-                jew[8] = parseInt(lv8jew.value);
-                jew[9] = parseInt(lv9jew.value);
-                
-                for(var i = 0; i < jew.length; i ++){
-                    if(jew[i] >= 3){
-                        jew[i + 1] += Math.floor(jew[i] / 3);
-                        jew[i] = jew[i] % 3;
-                    }
+            var jew = [lv0, lv1, lv2, lv3, lv4, lv5, lv6, lv7, lv8, lv9, lv10, lv11];
 
-                    else if(jew[11] >= 1){
-                        jew[10] += Math.floor(jew[11] * 3);
-                        jew[11] = 0;
-                    }
+            jew[1] = parseInt(lv1jew.value);
+            jew[2] = parseInt(hell_box.value) * 2 + parseInt(lv2jew.value);
+            jew[3] = (parseInt(normal_box.value) + parseInt(hard_box.value)) + parseInt(hell_box.value) * 2 + parseInt(eternal_box.value) + parseInt(lv3jew.value);
+            jew[4] = parseInt(normal_box.value) * 2 + parseInt(hard_box.value) * 2 + parseInt(hell_box.value) * 2 + parseInt(lv4jew.value);
+            jew[5] = parseInt(eternal_box.value) + parseInt(lv5jew.value);
+            jew[6] = parseInt(lv6jew.value);
+            jew[7] = parseInt(lv7jew.value);
+            jew[8] = parseInt(lv8jew.value);
+            jew[9] = parseInt(lv9jew.value);
+
+            for (var i = 0; i < jew.length; i++) {
+                if (jew[i] >= 3) {
+                    jew[i + 1] += Math.floor(jew[i] / 3);
+                    jew[i] = jew[i] % 3;
+                } else if (jew[11] >= 1) {
+                    jew[10] += Math.floor(jew[11] * 3);
+                    jew[11] = 0;
                 }
-
-
-                for(var x = 0; x < jew.length - 1; x++){
-                    if(jew[x] != 0){
-                        print_box.innerHTML = print_box.innerHTML + x + " 레벨 보석: " + jew[x] + "개<br><br>";
-                    }
-                }
-
-                if(jew[11] >= 1){
-                    console.log("abc");
-                }                
-                
             }
+
+            result_grid.innerHTML = "";
+            var hasResult = false;
+
+            for (var x = 0; x < jew.length - 1; x++) {
+                if (jew[x] !== 0) {
+                    hasResult = true;
+                    var item = document.createElement("div");
+                    item.className = "result-item";
+                    item.innerHTML =
+                        '<div class="result-item-level">' + x + ' 레벨</div>' +
+                        '<div class="result-item-value">' + jew[x] + '</div>' +
+                        '<div class="result-item-unit">개</div>';
+                    result_grid.appendChild(item);
+                }
+            }
+
+            if (!hasResult) {
+                result_grid.innerHTML = '<div class="result-empty">결과가 없습니다.</div>';
+            }
+
+            result_area.classList.add("visible");
         });
-    
 
-        document.getElementById("reset").addEventListener("click", function(){  //  리셋 버튼 이벤트
-
-            normal_box.value = 0;
-            hard_box.value = 0;
-            hell_box.value = 0;
+        document.getElementById("reset").addEventListener("click", function () {
+            normal_box.value  = 0;
+            hard_box.value    = 0;
+            hell_box.value    = 0;
             eternal_box.value = 0;
-            print_box.innerHTML = "";
-
-        })
-
-
-        function detectMobileDevice(agent) {
-            const mobileRegex = [
-                /Android/i,
-                /iPhone/i,
-                /iPad/i,
-                /iPod/i,
-                /BlackBerry/i,
-                /Windows Phone/i
-            ]
-
-                return mobileRegex.some(mobile => agent.match(mobile))
-        }
-
-        const isMobile = detectMobileDevice(window.navigator.userAgent)
-
-
-        /*
-
-        var normal_div = document.getElementById("normal_div");
-        var hard_div = document.getElementById("hard_div");
-        var hell_div = document.getElementById("hell_div");
-        var eternal_div = document.getElementById("eternal_div");
-        print_box = print_div
-        var footer_div = document.getElementById("footer");
-
-        */
-
-        if (isMobile) {
-            console.log('current device is mobile')
-
-            normal_div.style.paddingRight = "20%";
-            hard_div.style.paddingRight = "20%";
-            hell_div.style.paddingRight = "20%";
-            eternal_div.style.paddingRight = "20%";
-
-            normal_box.style.width = "10%";
-            normal_box.style.fontSize = "100%";
-
-            hard_box.style.width = "10%";
-            hard_box.style.fontSize = "100%";
-
-            hell_box.style.width = "10%";
-            hell_box.style.fontSize = "100%";
-
-            eternal_box.style.width = "10%";
-            eternal_box.style.fontSize = "100%";
-
-            print_box.style.float = "left";
-            print_box.style.width = "100%";
-            print_box.style.paddingLeft = "35%";
-
-            footer_div.style.float = "left";
-            footer_div.style.width = "100%";
-            footer_div.style.paddingLeft = "12%";
-            
-            button_div.style.position = "relative";
-            button_div.style.float = "left";
-            button_div.style.width = "100%";
-            button_div.style.paddingTop = "10%";
-            
-
-        } else {
-            console.log('current device is not mobile')
-
-        }
+            lv1jew.value = lv2jew.value = lv3jew.value = 0;
+            lv4jew.value = lv5jew.value = lv6jew.value = 0;
+            lv7jew.value = lv8jew.value = lv9jew.value = 0;
+            result_area.classList.remove("visible");
+            result_grid.innerHTML = "";
+        });
     </script>
 </body>
 </html>
